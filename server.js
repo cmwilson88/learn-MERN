@@ -4,10 +4,16 @@ const bodyParser = require('body-parser'),
       mongoose   = require('mongoose'),
       express    = require('express'),
       router     = express.Router(),
+      config     = require('./config')
       app        = express();
 
 
 const port = process.env.API_PORT || 3001;
+
+var mongoDB = `mongodb://${config.DB_USER}:${config.DB_PASS}@ds243325.mlab.com:43325/mern-crud-11-1-17`;
+mongoose.connect(mongoDB, {useMongoClient: true})
+var db = mongoose.connection
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
