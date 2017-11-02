@@ -1,4 +1,4 @@
 module.exports = {
-    DB_USER = 'cmw.wilson88',
-    DB_PASS = 'myMLabPass123.'
+    DB_USER: 'mern-user',
+    DB_PASS: 'mern-user-pass'
 }

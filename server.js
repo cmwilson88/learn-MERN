@@ -4,10 +4,10 @@ const bodyParser = require('body-parser'),
       mongoose   = require('mongoose'),
       express    = require('express'),
       router     = express.Router(),
-      config     = require('./config')
+      config     = require('./config'),
       app        = express();
 
-
+const Comment = require('./model/comments');
 const port = process.env.API_PORT || 3001;
 
 var mongoDB = `mongodb://${config.DB_USER}:${config.DB_PASS}@ds243325.mlab.com:43325/mern-crud-11-1-17`;
