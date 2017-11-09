@@ -7,13 +7,16 @@ const bodyParser = require('body-parser'),
       config     = require('./config'),
       app        = express();
 
+const seedDB = require('./seed');
 const Comment = require('./model/comments');
 const port = process.env.API_PORT || 3001;
 
 var mongoDB = `mongodb://${config.DB_USER}:${config.DB_PASS}@ds243325.mlab.com:43325/mern-crud-11-1-17`;
 mongoose.connect(mongoDB, {useMongoClient: true})
+mongoose.Promise = Promise;
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+seedDB()
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
